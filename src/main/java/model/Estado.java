@@ -1,35 +1,30 @@
 package model;
-
 import javax.persistence.*;
 
 @Entity
-public class Cidade {
+public class Estado {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name="cidnome", nullable = false)
+    @Column(nullable = false, unique = true)
     private String nome;
-    @Column(name = "cidibge", unique = true, nullable = false, length = 7)
+    @Column(nullable = false, unique = true)
     private String igbe;
-    @ManyToOne
-    private Estado estado;
 
 
-    public Cidade(){}
 
-    public Cidade(Long id, String nome, String igbe) {
+    public Estado(){}
+
+    public Estado(Long id, String nome, String igbe) {
         this.id = id;
         this.nome = nome;
         this.igbe = igbe;
     }
 
-    public Cidade(String nome, String igbe) {
+    public Estado(String nome, String igbe) {
         this.nome = nome;
         this.igbe = igbe;
-        this.estado = estado;
     }
-
-
 
     public Long getId() {
         return id;
@@ -47,19 +42,11 @@ public class Cidade {
         this.nome = nome;
     }
 
-    public String getIgbe() {
+    public String getIbge() {
         return igbe;
     }
 
-    public void setIgbe(String igbe) {
-        this.igbe = igbe;
-    }
-
-    public Estado getEstado() {
-        return estado;
-    }
-
-    public void setEstado(Estado estado) {
-        this.estado = estado;
+    public void setIbge(String sigla) {
+        this.igbe = sigla;
     }
 }

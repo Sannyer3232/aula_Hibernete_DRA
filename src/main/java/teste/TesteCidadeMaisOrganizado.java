@@ -19,7 +19,7 @@ public class TesteCidadeMaisOrganizado {
 
         CidadeDAO cidadeDAO = new CidadeDAO(entityManager);
 
-        Cidade cidade = new Cidade("Manaus", "1302603", "Amazonas");
+        Cidade cidade = new Cidade("Manaus", "1302603");
 
         cidadeDAO.inserir(cidade);
 
@@ -81,7 +81,7 @@ public class TesteCidadeMaisOrganizado {
 
         CidadeDAO cidadeDAO = new CidadeDAO(entityManager);
 
-        Cidade cidade = new Cidade( 1l ,"Manaus", "1302603", "Amazonas");
+        Cidade cidade = new Cidade( 1l ,"Manaus", "1302603");
 
         cidadeDAO.alterar(cidade);
 
@@ -91,11 +91,12 @@ public class TesteCidadeMaisOrganizado {
 
     public static void main(String[] args) {
 
-        inserir();
+        //inserir();
         //consultar(1L);
         //remover(1L);
         //alterar();
-        //listar();
+
+        listar();
 
         ConexaoUtil.fecharFabrica();
     }

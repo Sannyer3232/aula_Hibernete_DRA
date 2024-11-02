@@ -14,7 +14,7 @@ public class TesteCidade {
 
         EntityManager entityManager = fabrica.createEntityManager();
 
-        Cidade cidade = new Cidade("Manaus", "1302603", "Amazonas");
+        Cidade cidade = new Cidade("Manaus", "1302603");
 
         entityManager.getTransaction().begin();
 
