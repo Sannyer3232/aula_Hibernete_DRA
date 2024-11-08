@@ -1,5 +1,7 @@
 package model;
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Estado {
@@ -10,6 +12,7 @@ public class Estado {
     private String nome;
     @Column(nullable = false, unique = true)
     private String igbe;
+
 
 
 
@@ -48,5 +51,14 @@ public class Estado {
 
     public void setIbge(String sigla) {
         this.igbe = sigla;
+    }
+
+    @Override
+    public String toString() {
+        return "Estado{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", igbe='" + igbe + '\'' +
+                '}';
     }
 }

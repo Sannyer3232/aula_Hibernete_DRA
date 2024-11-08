@@ -11,7 +11,7 @@ public class GenericoDAO<Tipo> {
     private EntityManager entityManager;
     private Class<Tipo> classe;
 
-    public GenericoDAO(Class classe, EntityManager entityManager) {
+    public GenericoDAO(Class<Tipo> classe, EntityManager entityManager) {
         this.entityManager = entityManager;
         this.classe = classe;
     }
@@ -29,11 +29,28 @@ public class GenericoDAO<Tipo> {
 
     public List<Tipo> listar(){
 
-        String consulta = "select o from" +classe.getName()+ "o";
+        String consulta = "select o from " + classe.getName() + " o";
 
         Query query= entityManager.createQuery(consulta);
 
         return query.getResultList();
+
+    }
+
+    public void alterar(Tipo objeto){
+
+        entityManager.getTransaction().begin();
+        entityManager.merge(objeto);
+        entityManager.getTransaction().commit();
+
+    }
+
+    public void remover(Long id){
+
+        Tipo objeto = consultar(id);
+        entityManager.getTransaction().begin();
+        entityManager.remove(objeto);
+        entityManager.getTransaction().commit();
 
     }
 }

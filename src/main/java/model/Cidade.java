@@ -1,6 +1,8 @@
 package model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Cidade {
@@ -14,6 +16,11 @@ public class Cidade {
     @ManyToOne
     private Estado estado;
 
+    @OneToMany(mappedBy = "cidade")
+    private List<Pessoa> pessoas = new ArrayList<>();
+
+
+
 
     public Cidade(){}
 
@@ -26,10 +33,13 @@ public class Cidade {
     public Cidade(String nome, String igbe) {
         this.nome = nome;
         this.igbe = igbe;
-        this.estado = estado;
     }
 
-
+    public Cidade(String nome, String igbe, Estado estado) {
+        this.nome = nome;
+        this.igbe = igbe;
+        this.estado = estado;
+    }
 
     public Long getId() {
         return id;
@@ -61,5 +71,23 @@ public class Cidade {
 
     public void setEstado(Estado estado) {
         this.estado = estado;
+    }
+
+    public void addPessoa(Pessoa pessoa){
+        if(!this.pessoas.contains(pessoa)){
+            this.pessoas.add(pessoa);
+            pessoa.setCidade(this);
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Cidade{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", igbe='" + igbe + '\'' +
+                ", estado=" + estado +
+                ", pessoas=" + pessoas +
+                '}';
     }
 }

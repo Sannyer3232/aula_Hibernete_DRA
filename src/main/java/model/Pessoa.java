@@ -87,5 +87,17 @@ public class Pessoa {
 
     public void setCidade(Cidade cidade) {
         this.cidade = cidade;
+        cidade.addPessoa(this);
+    }
+
+    @Override
+    public String toString() {
+        return "Pessoa{" +
+                "id=" + id +
+                ", cpf='" + cpf + '\'' +
+                ", nome='" + nome + '\'' +
+                ", telefone='" + telefone + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }
