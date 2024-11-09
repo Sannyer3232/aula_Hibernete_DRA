@@ -24,7 +24,6 @@ public class GenericoDAO<Tipo> {
 
     public Tipo consultar(Long id){
         return entityManager.find(classe, id);
-
     }
 
     public List<Tipo> listar(){

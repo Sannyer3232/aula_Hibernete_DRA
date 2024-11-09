@@ -142,7 +142,7 @@ public class TestaGenericoDAO {
 
         Cidade cidade = cidadeDAO.consultar(1L);
 
-        Pessoa pessoa = new Pessoa("Sannyer Cardoso","999827524","carvalhosannyer@gmail.com","03536054250");
+        Pessoa pessoa = new Pessoa("Fani Tamires","999827524","tamiresFani@gmail.com","03536054252");
 
         pessoa.setCidade(cidade);
 
@@ -164,7 +164,7 @@ public class TestaGenericoDAO {
         //inserirCidadeNovoEstado();
         //inserirCidadeEstadoNoBD();
        // listarCidades();
-        inserirPessoa();
+       inserirPessoa();
 
         ConexaoUtil.fecharFabrica();
 

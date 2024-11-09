@@ -3,6 +3,8 @@ package model;
 
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Pessoa {
@@ -21,6 +23,8 @@ public class Pessoa {
     private String email;
     @ManyToOne
     private Cidade cidade;
+    @ManyToMany
+    private List<Interesse> interesses = new ArrayList<>();
 
     public Pessoa() {
     }
@@ -30,7 +34,6 @@ public class Pessoa {
         this.cpf = cpf;
         this.telefone = telefone;
         this.email = email;
-
     }
 
     public Pessoa(long id, String cpf, String nome, String telefone, String email) {
@@ -39,6 +42,14 @@ public class Pessoa {
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
+    }
+
+    public Pessoa(String cpf, String nome, String telefone, String email, Cidade cidade) {
+        this.cpf = cpf;
+        this.nome = nome;
+        this.telefone = telefone;
+        this.email = email;
+        this.cidade = cidade;
     }
 
     public long getId() {
@@ -88,6 +99,26 @@ public class Pessoa {
     public void setCidade(Cidade cidade) {
         this.cidade = cidade;
         cidade.addPessoa(this);
+    }
+
+    public List<Interesse> getInteresses() {
+        return interesses;
+    }
+
+    public void setInteresses(List<Interesse> interesses) {
+
+        this.interesses = interesses;
+
+        for(Interesse interesse : interesses){
+            interesse.addPessoa(this);
+        }
+    }
+
+    public void addInteresse(Interesse interesse){
+        if(!this.interesses.contains(interesse)){
+            this.interesses.add(interesse);
+            interesse.addPessoa(this);
+        }
     }
 
     @Override
